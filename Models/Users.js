@@ -24,6 +24,20 @@ let userSchema=new mongose.Schema({
         Time : { type : Date, default: Date.now },
         Format:String,
         Color:String
+    }],
+    Todo:[{
+        TodoText:{
+            type:String,
+            default:"untitled"
+        },
+        TodoHeading:{
+            type:String,
+            default:"untitled"
+        },
+        Time : { type : Date },
+        Format:String,
+        Color:String,
+        Status:Boolean
     }]
 })
 console.log(process.env.SECRET)
