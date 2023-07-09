@@ -25,7 +25,7 @@ let userSchema=new mongose.Schema({
         Format:String,
         Color:String
     }],
-    Todo:[{
+    Todo:[{ 
         TodoText:{
             type:String,
             default:"untitled"
