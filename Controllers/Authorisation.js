@@ -1,7 +1,7 @@
 const app=require("express")()
 const user=require("../Models/Users")
 const jwt=require("jsonwebtoken")
-
+const mongoose=require("mongoose")
 
 app.get("/auth/user/:token",(req,res)=>{
     try{
@@ -14,6 +14,7 @@ app.get("/auth/user/:token",(req,res)=>{
 })
 
 app.post('/register',async (req,res)=>{
+    try{
     const data=new user({
         _id:new mongoose.Types.ObjectId,
         name:req.body.name,
@@ -34,6 +35,10 @@ app.post('/register',async (req,res)=>{
         const token=jwt.sign({_id:newUser._id},process.env.JWT_KEY)
         res.status(200).send({id:newUser._id,token})
     } 
+    }catch(err){
+        console.log(err)
+        res.send("Internall Error").status(500)
+    }
 })
 
 app.post('/login',async (req,res)=>{

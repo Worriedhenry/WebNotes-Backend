@@ -10,8 +10,7 @@ let userSchema=new mongose.Schema({
     Phone:{
         type:Number,
         required: [true, 'Please Enter Phone'],
-        min:5000000000,
-        max:10000000000
+
 
     },
     Password:{
