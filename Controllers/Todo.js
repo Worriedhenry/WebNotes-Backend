@@ -48,7 +48,7 @@ app.put('/delTask/:UserId',async (req,res)=>{
         }
     })
     r=await user.updateOne({_id:req.params.UserId},{$set:{Todo:arr1}})
-    console.log(r)
+    // console.log(r)
     res.send({array:arr1})
     
 })

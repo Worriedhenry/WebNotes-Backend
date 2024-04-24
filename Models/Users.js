@@ -21,7 +21,11 @@ let userSchema=new mongose.Schema({
     Notes:[{
         NoteText:String,
         Time : { type : Date, default: Date.now },
-        Format:String,
+        Format:{
+            type:String ,
+            default:"Personal"
+
+        },
         Color:String
     }],
     Todo:[{ 
@@ -34,11 +38,14 @@ let userSchema=new mongose.Schema({
             default:"untitled"
         },
         Time : { type : Date },
-        Format:String,
+        Format:{
+            type:String ,
+            default:"Personal"
+        },
         Color:String,
         Status:Boolean
     }]
 })
-console.log(process.env.SECRET)
+// console.log(process.env.SECRET)
 // userSchema.plugin(encryption,{ secret: process.env.SECRET, excludeFromEncryption: ['Phone','name'] })
 module.exports=mongose.model('Users',userSchema) 

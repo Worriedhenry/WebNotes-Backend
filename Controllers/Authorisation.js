@@ -44,15 +44,14 @@ app.post('/register',async (req,res)=>{
 app.post('/login',async (req,res)=>{
     try{
     let Aluser=await user.findOne({Phone:req.body.Phone})
-    console.log(Aluser)
+
     if(Aluser){
             if(Aluser.Password===req.body.Password){
                 const token=jwt.sign({_id:Aluser._id},process.env.JWT_KEY)
-                console.log(token)
                 res.status(200).send({token,id:Aluser._id})
             }
             else{
-                res.status(303).send("Invalid Credentials")
+                res.status(201).send("Invalid Credentials")
             }
         }
     else{
